@@ -1,5 +1,5 @@
 @extends('back.layouts.master')
-@section('title', 'Kontrol Paneli')
+@section('title', __('routes.dashboard'))
 @section('content')
     <!-- dashboard container -->
     <div class="dashboard__container d-flex">

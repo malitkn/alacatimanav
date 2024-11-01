@@ -1,5 +1,5 @@
 @extends('back.layouts.master')
-@section('title', 'Ayarlar')
+@section('title', __('routes.settings.index'))
 @pushOnce('css')
     <link rel="stylesheet" href="{{ asset('back/assets/css/creat-listing.css')}}">
 @endpushOnce

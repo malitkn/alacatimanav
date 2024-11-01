@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'dashboard' => 'Ana Sayfa',
+    'dashboard' => 'Kontrol Paneli',
     'settings.index' => 'Genel Ayarlar',
     'pages.categories.index' => 'Sayfalar',
     'pages.categories.create' => 'Sayfa oluştur',
