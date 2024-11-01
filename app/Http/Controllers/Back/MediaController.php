@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Back;
 
-use App\Enums\SettingMessage;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MediaUpdateRequest;
 use App\Models\Media;
@@ -27,7 +26,7 @@ class MediaController extends Controller
             return redirect()->back();
         }
         $this->uploadAndSave($request->only('section')['section']);
-        $request->session()->now('status', ['isSuccess' => true, 'message' => __(SettingMessage::SUCCESS)]);
+        $request->session()->now('status', ['isSuccess' => true, 'message' => __('Ayarlar başarıyla güncellendi.')]);
         return view('back.settings.index')
             ->with('setting', $this->setting)
             ->with('media', $this->media);

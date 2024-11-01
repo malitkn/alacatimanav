@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Back;
 
-use App\Enums\SettingMessage;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SettingUpdateRequest;
 use App\Models\Media;
@@ -33,7 +32,7 @@ class SettingController extends Controller
     {
         $this->setting->fill($request->all());
         $this->setting->save();
-        $request->session()->now('status', ['isSuccess' => true, 'message' => __(SettingMessage::SUCCESS)]);
+        $request->session()->now('status', ['isSuccess' => true, 'message' => __('Ayarlar başarıyla güncellendi.')]);
 
         return $this->index();
     }
