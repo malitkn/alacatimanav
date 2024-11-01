@@ -28,11 +28,3 @@ Breadcrumbs::for('reset-password', function (BreadcrumbTrail $trail) {
 
 //                              Admin Routes
 // -------------------------------------------------------------------------
-
-Breadcrumbs::for('dashboard', function (BreadcrumbTrail $trail) {
-    $trail->push('Ana Sayfa', route('dashboard'));
-});
-
-Breadcrumbs::for('settings.index', function (BreadcrumbTrail $trail) {
-    $trail->push('Genel Ayarlar', route('settings.index'));
-});
