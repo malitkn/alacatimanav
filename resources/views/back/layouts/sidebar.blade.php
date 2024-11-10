@@ -5,7 +5,7 @@
                 <img class="main__logo--img desktop light__logo" src="{{ asset('back/assets/img/logo/nav-log.png')}}"
                      alt="logo-img">
                 <img class="main__logo--img desktop dark__logo"
-                     src="{{ asset('storage/nav-log2-white.png')}}" alt="logo-img">
+                     src="{{ asset('storage/images/header-logo.png')}}" alt="logo-img">
                 <img class="main__logo--img mobile" src="{{ asset('back/assets/img/logo/logo-mobile.png')}}"
                      alt="logo-img">
             </a></h1>
@@ -52,20 +52,23 @@
                 </a>
             </li>
             <li class="sidebar__menu--items">
-                <label class="sidebar__menu--title">Manage Listings</label>
+                <label class="sidebar__menu--title">İçerik Yönetimi</label>
             </li>
             <li class="sidebar__menu--items dropdown__items">
-                <a class="sidebar__menu--link dropdown__link--active" href="#" data-bs-toggle="collapse"
+                <a class="sidebar__menu--link dropdown__link--active collapsed" href="#" data-bs-toggle="collapse"
                    data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    <svg class="sidebar__menu--icon" width="20" height="20" viewBox="0 0 20 20" fill="none"
-                         xmlns="http://www.w3.org/2000/svg">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" class="sidebar__menu--icon" viewBox="0 0 512 512">
                         <path
-                            d="M7.51663 2.36664L3.02496 5.86664C2.27496 6.44997 1.66663 7.69164 1.66663 8.63331V14.8083C1.66663 16.7416 3.24163 18.325 5.17496 18.325H14.825C16.7583 18.325 18.3333 16.7416 18.3333 14.8166V8.74997C18.3333 7.74164 17.6583 6.44997 16.8333 5.87497L11.6833 2.26664C10.5166 1.44997 8.64163 1.49164 7.51663 2.36664Z"
-                            stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M10 14.9917V12.4917" stroke="currentColor" stroke-linecap="round"
-                              stroke-linejoin="round"/>
+                            d="M368 415.86V72a24.07 24.07 0 00-24-24H72a24.07 24.07 0 00-24 24v352a40.12 40.12 0 0040 40h328"
+                            fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="32"/>
+                        <path d="M416 464h0a48 48 0 01-48-48V128h72a24 24 0 0124 24v264a48 48 0 01-48 48z" fill="none"
+                              stroke="currentColor" stroke-linejoin="round" stroke-width="32"/>
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                              stroke-width="32" d="M240 128h64M240 192h64M112 256h192M112 320h192M112 384h192"/>
+                        <path
+                            d="M176 208h-64a16 16 0 01-16-16v-64a16 16 0 0116-16h64a16 16 0 0116 16v64a16 16 0 01-16 16z"/>
                     </svg>
-                    <span class="sidebar__menu--text">My Properties</span>
+                    <span class="sidebar__menu--text">Sayfa Yönetimi</span>
                     <svg class="sidebar__menu--link__arrow" width="12" height="8" viewBox="0 0 12 8" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -73,13 +76,11 @@
                             fill="currentColor"/>
                     </svg>
                 </a>
-                <ul class="sidebar__dropdown--menu accordion-collapse collapse show" id="collapseOne">
+                <ul class="sidebar__dropdown--menu accordion-collapse collapse" id="collapseOne">
                     <li class="sidebar__dropdown--menu__items"><a class="sidebar__dropdown--menu__link"
-                                                                  href="./my-properties.html">General Elements</a></li>
+                                                                  href="{{ route('pages.categories.index') }}">Sayfalar</a></li>
                     <li class="sidebar__dropdown--menu__items"><a class="sidebar__dropdown--menu__link"
-                                                                  href="./my-properties.html">Advanced Elements</a></li>
-                    <li class="sidebar__dropdown--menu__items"><a class="sidebar__dropdown--menu__link"
-                                                                  href="./my-properties.html">Editors</a></li>
+                                                                  href="{{ route('pages.categories.create') }}">Sayfa oluştur</a></li>
                 </ul>
             </li>
             <li class="sidebar__menu--items"><a class="sidebar__menu--link" href="./my-favorites.html">
@@ -96,8 +97,7 @@
                             stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                     <span class="sidebar__menu--text">My Favorites</span>
-                </a>
-            </li>
+                </a></li>
             <li class="sidebar__menu--items"><a class="sidebar__menu--link" href="./saved-search.html">
                     <svg class="sidebar__menu--icon" width="20" height="20" viewBox="0 0 20 20" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
@@ -112,8 +112,7 @@
                               stroke-linejoin="round"/>
                     </svg>
                     <span class="sidebar__menu--text">Saved Search</span>
-                </a>
-            </li>
+                </a></li>
             <li class="sidebar__menu--items dropdown__items">
                 <a class="sidebar__menu--link dropdown__link--active" href="#" data-bs-toggle="collapse"
                    data-bs-target="#collapsetwo" aria-expanded="true" aria-controls="collapsetwo">
@@ -147,33 +146,33 @@
             <li class="sidebar__menu--items">
                 <label class="sidebar__menu--title">Ayarlar</label>
             </li>
-           <!-- <li class="sidebar__menu--items"><a class="sidebar__menu--link" href="./my-package.html">
-                    <svg class="sidebar__menu--icon" width="20" height="20" viewBox="0 0 20 20" fill="none"
-                         xmlns="http://www.w3.org/2000/svg">
-                        <path d="M2.64172 6.19995L10.0001 10.4583L17.3084 6.22495" stroke="currentColor"
-                              stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M10 18.0083V10.45" stroke="currentColor" stroke-linecap="round"
-                              stroke-linejoin="round"/>
-                        <path
-                            d="M8.27503 2.06658L3.82503 4.53324C2.8167 5.09157 1.9917 6.49157 1.9917 7.64157V12.3499C1.9917 13.4999 2.8167 14.8999 3.82503 15.4582L8.27503 17.9332C9.22503 18.4582 10.7834 18.4582 11.7334 17.9332L16.1834 15.4582C17.1917 14.8999 18.0167 13.4999 18.0167 12.3499V7.64157C18.0167 6.49157 17.1917 5.09157 16.1834 4.53324L11.7334 2.05824C10.775 1.53324 9.22503 1.53324 8.27503 2.06658Z"
-                            stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    <span class="sidebar__menu--text">My Package</span>
-                </a>
-            </li> -->
-          <!--  <li class="sidebar__menu--items"><a class="sidebar__menu--link" href="./profile.html">
-                    <svg class="sidebar__menu--icon" width="20" height="20" viewBox="0 0 20 20" fill="none"
-                         xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M10 10.0001C12.3012 10.0001 14.1667 8.1346 14.1667 5.83342C14.1667 3.53223 12.3012 1.66675 10 1.66675C7.69885 1.66675 5.83337 3.53223 5.83337 5.83342C5.83337 8.1346 7.69885 10.0001 10 10.0001Z"
-                            stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path
-                            d="M17.1583 18.3333C17.1583 15.1083 13.95 12.5 10 12.5C6.05001 12.5 2.84167 15.1083 2.84167 18.3333"
-                            stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    <span class="sidebar__menu--text"> My Profile</span>
-                </a>
-            </li> -->
+            <!-- <li class="sidebar__menu--items"><a class="sidebar__menu--link" href="./my-package.html">
+                     <svg class="sidebar__menu--icon" width="20" height="20" viewBox="0 0 20 20" fill="none"
+                          xmlns="http://www.w3.org/2000/svg">
+                         <path d="M2.64172 6.19995L10.0001 10.4583L17.3084 6.22495" stroke="currentColor"
+                               stroke-linecap="round" stroke-linejoin="round"/>
+                         <path d="M10 18.0083V10.45" stroke="currentColor" stroke-linecap="round"
+                               stroke-linejoin="round"/>
+                         <path
+                             d="M8.27503 2.06658L3.82503 4.53324C2.8167 5.09157 1.9917 6.49157 1.9917 7.64157V12.3499C1.9917 13.4999 2.8167 14.8999 3.82503 15.4582L8.27503 17.9332C9.22503 18.4582 10.7834 18.4582 11.7334 17.9332L16.1834 15.4582C17.1917 14.8999 18.0167 13.4999 18.0167 12.3499V7.64157C18.0167 6.49157 17.1917 5.09157 16.1834 4.53324L11.7334 2.05824C10.775 1.53324 9.22503 1.53324 8.27503 2.06658Z"
+                             stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+                     </svg>
+                     <span class="sidebar__menu--text">My Package</span>
+                 </a>
+             </li> -->
+            <!--  <li class="sidebar__menu--items"><a class="sidebar__menu--link" href="./profile.html">
+                      <svg class="sidebar__menu--icon" width="20" height="20" viewBox="0 0 20 20" fill="none"
+                           xmlns="http://www.w3.org/2000/svg">
+                          <path
+                              d="M10 10.0001C12.3012 10.0001 14.1667 8.1346 14.1667 5.83342C14.1667 3.53223 12.3012 1.66675 10 1.66675C7.69885 1.66675 5.83337 3.53223 5.83337 5.83342C5.83337 8.1346 7.69885 10.0001 10 10.0001Z"
+                              stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+                          <path
+                              d="M17.1583 18.3333C17.1583 15.1083 13.95 12.5 10 12.5C6.05001 12.5 2.84167 15.1083 2.84167 18.3333"
+                              stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                      <span class="sidebar__menu--text"> My Profile</span>
+                  </a>
+              </li> -->
             <li class="sidebar__menu--items dropdown__items">
                 <a class="sidebar__menu--link dropdown__link--active collapsed" href="#"
                    data-bs-toggle="collapse"

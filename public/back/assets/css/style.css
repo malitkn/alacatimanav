@@ -5,7 +5,7 @@
   Version: 1.0.0
 
   ----------------------------
-  [Table of contents CSS] 
+  [Table of contents CSS]
   ----------------------------
 
     1. Base CSS
@@ -14,16 +14,17 @@
     4. About css
     5. Blog css
     6. brand css
-    7. Contact page css 
+    7. Contact page css
     8. Footer css
     9. home three css
     10. Newsletter css
     11. Portfolio css
-    12. preloader css 
+    12. preloader css
     13. Resume css
     14. services css
     15. Skills css
     16. testimonial css
+    17. Alert css
 
 */
 /*
@@ -1180,8 +1181,8 @@ body.overlay__active::before,
 }
 
 
-/* 
-  offcanvas Menu css 
+/*
+  offcanvas Menu css
 */
 .offcanvas__menu_ul {
   overflow: auto;
@@ -1208,8 +1209,8 @@ body.overlay__active::before,
   color: var(--color-foreground);
 }
 
-/* 
-    offcanvas Sub Menu 
+/*
+    offcanvas Sub Menu
 */
 .offcanvas__sub_menu {
   display: none;
@@ -1995,4 +1996,13 @@ body.overlay__active::before,
 }
 .copyright__content--link:hover{
   text-decoration: underline;
+}
+
+/* Alert css*/
+.alert-error {
+    background-color: var(--bs-red) !important;
+}
+
+.alert-ok {
+    background-color: var(--bs-green) !important;
 }

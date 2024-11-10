@@ -147,7 +147,7 @@
   .interior__amenities--check__input:checked ~ .interior__amenities--checkmark::before {
     display: block;
   }
-  
+
   .interior__amenities--checkmark {
     height: 1.8rem;
     width: 1.8rem;
@@ -177,7 +177,7 @@
     position: absolute;
     display: none;
   }
-  
+
   .advance__apeartment--inner{
     padding: 2rem 2.5rem 3rem;
     gap: 2rem;
@@ -190,7 +190,7 @@
   @media only screen and (max-width: 1365px) {
     .add__property__inner{
         flex-direction: column;
-    
+
       }
     }
   .add__property--step{
