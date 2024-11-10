@@ -2,7 +2,10 @@
 
 namespace App\Http\Requests;
 
+use App\Enums\PageCategoryListType;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rule;
 
 class StorePageCategoryRequest extends FormRequest
 {
@@ -11,7 +14,7 @@ class StorePageCategoryRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +25,18 @@ class StorePageCategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' => ['required', 'max:150'],
+            'slug' => ['required', 'max:80', 'unique:page_categories,slug'],
+            'parent' => ['required',
+                // 0 eşit değil ve page_categories tablosunda yok hata döndür
+                function ($attribute, $value, $fail) {
+                    if ($value !== "0" && !DB::table('page_categories')->where('id', $value)->exists()) {
+                        $fail("Seçilen {$attribute} değeri geçersiz.");
+                    }
+                }
+            ],
+            'meta_description' => ['required', 'max:150'],
+            'list_type' => ['required', Rule::enum(PageCategoryListType::class)],
         ];
     }
 }

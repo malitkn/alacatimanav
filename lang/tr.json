@@ -67,5 +67,10 @@
     "Your new password has been saved.": "Yeni parolanız kaydedildi. :login buraya tıklayarak giriş yapabilirsiniz.",
     "Failed!": "İşlem Başarısız!",
     "The settings have been updated successfully.": "Ayarlar başarıyla güncellendi.",
-    "An error occurred while updating the settings": "Ayarlar güncellenirken bir hata oluştu."
+    "An error occurred while updating the settings": "Ayarlar güncellenirken bir hata oluştu.",
+    "The Page category named :title has been successfully created.": ":title adlı Sayfa kategorisi başarıyla oluşturuldu.",
+    "Record deleted successfully!": "Kayıt başarıyla silindi!",
+    "The record could not be deleted.": "Kayıt silinemedi!",
+    "Active": "Aktif",
+    "Passive": "Pasif"
 }

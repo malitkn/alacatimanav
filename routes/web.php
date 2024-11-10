@@ -17,15 +17,14 @@ Route::prefix('admin')->group(function () {
             Route::patch('/', [MediaController::class, 'update'])->name('media.update');
         });
         // Route::resource('pages',); TODO pages route
-        Route::resource('pages/categories', PageCategoryController::class)->names([
+        Route::resource('pages/categories', PageCategoryController::class)->except(['edit', 'show'])->names([
             'index' => 'pages.categories.index',
             'store' => 'pages.categories.store',
             'create' => 'pages.categories.create',
-            'show' => 'pages.categories.show',
-            'edit' => 'pages.categories.edit',
             'update' => 'pages.categories.update',
             'destroy' => 'pages.categories.destroy',
         ]);
+        Route::patch('pages/categories/slug/{category}', [PageCategoryController::class, 'isSlugUnique'])->name('slug.check');
     });
 });
 

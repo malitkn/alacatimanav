@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Diglactic\Breadcrumbs\Breadcrumbs;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -21,8 +22,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Breadcrumbs::macro('pageTitle', function ($route) {
-            return ($breadcrumb = Breadcrumbs::generate($route)[0]) ? "{$breadcrumb->title} – " : '';
-        });
+        Paginator::defaultView('pagination::default');
     }
 }

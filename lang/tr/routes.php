@@ -17,4 +17,5 @@ return [
     'settings.index' => 'Genel Ayarlar',
     'pages.categories.index' => 'Sayfalar',
     'pages.categories.create' => 'Sayfa oluştur',
+    'pages.categories.store' => 'Sayfa oluştur',
 ];

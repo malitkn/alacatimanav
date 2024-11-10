@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Enums\PageCategoryListType;
 use App\Models\PageCategory;
+use Database\Factories\PageCategoryFactory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -13,17 +15,6 @@ class PageCategorySeeder extends Seeder
      */
     public function run(): void
     {
-        PageCategory::create([
-            'slug' => 'test',
-            'title' => 'Test Sayfa',
-            'meta_description' => 'Example meta description',
-            'list_type' => 'grid',
-        ]);
-        PageCategory::create([
-            'slug' => 'test2',
-            'title' => 'Test2 Sayfa',
-            'meta_description' => 'Example meta description',
-            'list_type' => 'list',
-        ]);
+        PageCategory::factory(30)->create();
     }
 }

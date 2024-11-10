@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->string('slug');
             $table->string('title');
             $table->string('meta_description');
-            $table->enum('list_type', ['grid', 'list'])->default('grid');
+            $table->enum('list_type', [0, 1])->default(0);
             $table->boolean('status')->default(true);
             $table->timestamps();
         });
