@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
             MediaSeeder::class,
             BrokerSeeder::class,
             PageCategorySeeder::class,
+            PageSeeder::class,
         ]);
     }
 }

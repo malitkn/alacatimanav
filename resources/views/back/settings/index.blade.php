@@ -28,10 +28,10 @@
                                             <li class="chat__profile--photos__items">
                                                 <a id="a-{{$row->section}}"
                                                    class="chat__profile--photos__link glightbox"
-                                                   href="{{ asset($row->path) }}" data-gallery="gallery">
+                                                   href="{{ asset('storage/' . $row->path) }}" data-gallery="gallery">
                                                     <img id="img-{{ $row->section }}"
                                                          class="chat__profile--photos__media"
-                                                         src="{{ asset($row->path) }}" width="200" height="40"
+                                                         src="{{ asset('storage/' . $row->path) }}" width="200" height="40"
                                                          alt="img">
                                                 </a>
                                             </li>

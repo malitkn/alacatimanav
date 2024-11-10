@@ -18,14 +18,14 @@ class MediaSeeder extends Seeder
         Media::create(
             [
                 'section' => 'header',
-                'path' => Storage::url('nav-log2-white.png')
+                'path' => 'images/header-logo.png'
             ]
         );
 
         Media::create(
             [
                 'section' => 'footer',
-                'path' => Storage::url('nav-log2-white.png')
+                'path' => 'images/footer-logo.png'
             ]
         );
     }

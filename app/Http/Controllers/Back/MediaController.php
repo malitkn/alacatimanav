@@ -38,7 +38,7 @@ class MediaController extends Controller
             $path = $file->storeAs('images', $section . '-logo.' . $file->extension());
             $media = $this->media->where('section', $section)->first();
             $media->fill([
-                'path' => 'storage/' . $path
+                'path' => $path
             ]);
             $media->save();
         }
