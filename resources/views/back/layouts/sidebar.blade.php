@@ -4,8 +4,7 @@
         <h1 class="main__logo--title"><a class="main__logo--link" href="{{ route('dashboard') }}">
                 <img class="main__logo--img desktop light__logo" src="{{ asset('back/assets/img/logo/nav-log.png')}}"
                      alt="logo-img">
-                <img class="main__logo--img desktop dark__logo"
-                     src="{{ asset('storage/images/header-logo.png')}}" alt="logo-img">
+                <img class="main__logo--img desktop dark__logo" src="{{ asset('storage/images/header-logo.png')}}" alt="logo-img">
                 <img class="main__logo--img mobile" src="{{ asset('back/assets/img/logo/logo-mobile.png')}}"
                      alt="logo-img">
             </a></h1>

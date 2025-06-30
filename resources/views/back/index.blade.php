@@ -26,15 +26,19 @@
                     <h2 class="recent__activity--title">Son Etkinlikler</h2>
                 </div>
                 <ul class="recent__activity--message">
-                    @foreach($sessions as $session)
-                    <li class="recent__activity--message__list {{ $colours[$loop->index] }} d-flex justify-content-between">
-                        <div class="recent__activity--message__content">
-                            <p class="recent__activity--message__desc"> Kullanıcı: <span> {{ $session->user->name }} </span></p>
-                            <p class="recent__activity--message__desc2"> {{ __('routes.' . $session->payload['route']) }}  sayfasını ziyaret etti.</p>
-                        </div>
-                        <span class="recent__activity--message__time">{{ $session->last_activity }}</span>
-                    </li>
-                    @endforeach
+                    @if($sessions->isNotEmpty())
+                        @foreach($sessions as $session)
+                            <li class="recent__activity--message__list {{ $colours[$loop->index] }} d-flex justify-content-between">
+                                <div class="recent__activity--message__content">
+                                    <p class="recent__activity--message__desc"> Kullanıcı:
+                                        <span> {{ $session->user->name }} </span></p>
+                                    <p class="recent__activity--message__desc2"> {{ __('routes.' . $session->payload['route']) }}
+                                        sayfasını ziyaret etti.</p>
+                                </div>
+                                <span class="recent__activity--message__time">{{ $session->last_activity }}</span>
+                            </li>
+                        @endforeach
+                    @endif
                 </ul>
             </div>
         </div>
