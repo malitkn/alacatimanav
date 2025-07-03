@@ -2,7 +2,9 @@
 
 namespace App\Livewire\Products;
 
+use App\Http\Yemeksepeti;
 use App\Models\Product;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
@@ -68,7 +70,8 @@ class Update extends Component
         return view('livewire.products.update');
     }
 
-    public function update() {
-        $this->validate();
+    public function update(\App\Yemeksepeti\Product $yemeksepeti) {
+        dd(session('access_token'));
+
     }
 }
