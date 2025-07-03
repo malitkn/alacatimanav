@@ -12,16 +12,10 @@
         <nav class="offcanvas__menu">
             <ul class="offcanvas__menu_ul">
                 <li class="offcanvas__menu_li">
-                    <a class="offcanvas__menu_item" href="#">Site Ayarları</a>
+                    <a class="offcanvas__menu_item" href="#">Ürünler</a>
                     <ul class="offcanvas__sub_menu">
-                        <li class="offcanvas__sub_menu_li"><a href="{{ route('settings.index') }}" class="offcanvas__sub_menu_item">Genel Ayarlar</a></li>
-                    </ul>
-                </li>
-                <li class="offcanvas__menu_li">
-                    <a class="offcanvas__menu_item" href="{{ route('pages.categories.index') }}">Sayfalar</a>
-                    <ul class="offcanvas__sub_menu">
-                        <li class="offcanvas__sub_menu_li"><a href="{{ route('pages.categories.create') }}" class="offcanvas__sub_menu_item">Sayfa Oluştur</a></li>
-                        <li class="offcanvas__sub_menu_li"><a href="{{ route('pages.categories.index') }}" class="offcanvas__sub_menu_item">Sayfalar</a></li>
+                        <li class="offcanvas__sub_menu_li"><a href="{{ route('products.update') }}" class="offcanvas__sub_menu_item">Fiyat Güncelle</a></li>
+                        <li class="offcanvas__sub_menu_li"><a href="{{ route('products.settings') }}" class="offcanvas__sub_menu_item">Ayarlar</a></li>
                     </ul>
                 </li>
 

@@ -51,7 +51,7 @@
                 </a>
             </li>
             <li class="sidebar__menu--items">
-                <label class="sidebar__menu--title">İçerik Yönetimi</label>
+                <label class="sidebar__menu--title">Mağaza Yönetimi</label>
             </li>
             <li class="sidebar__menu--items dropdown__items">
                 <a class="sidebar__menu--link dropdown__link--active collapsed" href="#" data-bs-toggle="collapse"
@@ -67,7 +67,7 @@
                         <path
                             d="M176 208h-64a16 16 0 01-16-16v-64a16 16 0 0116-16h64a16 16 0 0116 16v64a16 16 0 01-16 16z"/>
                     </svg>
-                    <span class="sidebar__menu--text">Sayfa Yönetimi</span>
+                    <span class="sidebar__menu--text">Ürünler</span>
                     <svg class="sidebar__menu--link__arrow" width="12" height="8" viewBox="0 0 12 8" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -77,9 +77,9 @@
                 </a>
                 <ul class="sidebar__dropdown--menu accordion-collapse collapse" id="collapseOne">
                     <li class="sidebar__dropdown--menu__items"><a class="sidebar__dropdown--menu__link"
-                                                                  href="{{ route('pages.categories.index') }}">Sayfalar</a></li>
+                                                                  href="{{ route('products.update') }}">Fiyat Güncelle</a></li>
                     <li class="sidebar__dropdown--menu__items"><a class="sidebar__dropdown--menu__link"
-                                                                  href="{{ route('pages.categories.create') }}">Sayfa oluştur</a></li>
+                                                                  href="{{ route('products.settings') }}">Sayfa oluştur</a></li>
                 </ul>
             </li>
             <li class="sidebar__menu--items"><a class="sidebar__menu--link" href="./my-favorites.html">
@@ -172,7 +172,7 @@
                       <span class="sidebar__menu--text"> My Profile</span>
                   </a>
               </li> -->
-            <li class="sidebar__menu--items dropdown__items">
+        {{--    <li class="sidebar__menu--items dropdown__items">
                 <a class="sidebar__menu--link dropdown__link--active collapsed" href="#"
                    data-bs-toggle="collapse"
                    data-bs-target="#collapseSettings" aria-expanded="true" aria-controls="collapseSettings">
@@ -196,7 +196,7 @@
                         <a class="sidebar__dropdown--menu__link" href="{{ route('settings.index') }}">Genel Ayarlar</a>
                     </li>
                 </ul>
-            </li>
+            </li>--}}
             <li class="sidebar__menu--items">
                 <a class="sidebar__menu--link logout color-accent-2" href="{{ route('logout') }}">
                     <svg class="sidebar__menu--icon" width="20" height="20" viewBox="0 0 20 20" fill="none"
