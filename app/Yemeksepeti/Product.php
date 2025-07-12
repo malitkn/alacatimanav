@@ -2,6 +2,8 @@
 
 namespace App\Yemeksepeti;
 
+use App\Models\CommissionRate;
+use App\Models\Token;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
@@ -10,25 +12,21 @@ class Product
 {
     private $username;
     private $password;
+    private $firmId;
+    private $token;
 
     public function __construct()
     {
         $this->username = config('credentials.yemeksepeti.username', 'alacatimanav@gmail.com');
         $this->password = config('credentials.yemeksepeti.password', 'iskele72');
-
-        if (Cookie::has('access_token')) {
-            // Check token
-        } else {
-
+        $this->firmId = CommissionRate::where('firm', 'yemeksepeti')->first()->id;
+        $this->token = Token::where('firm', $this->firmId)->orderBy('created_at', 'desc')->first()->token; //
+        if (!$this->token) {
+            $this->login();
         }
     }
 
-    private function checkAccessToken()
-    {
-
-    }
-
-    public function login()
+    private function login()
     {
         $response = Http::withHeaders([
             'Host' => 'bff-api.eu.prd.portal.restaurant',
@@ -54,9 +52,62 @@ class Product
         if (!$response->ok()) {
             Log::critical('Yemeksepeti login olunamadı');
         }
-        $accessToken = explode('"access_token":"',$response->body())[1];
+        $accessToken = explode('"access_token":"', $response->body())[1];
         $accessToken = explode('"', $accessToken)[0];
-        session()->put('access_token', $accessToken);
+        Token::create([
+            'firm' => $this->firmId,
+            'token' => trim($accessToken)
+        ]);
         return $accessToken;
+    }
+
+    public function update($newPrice = 33.2)
+    {
+        $data = [
+            "operationName" => "UpdateProducts",
+            "variables" => [
+                "productsUpdate" => [
+                    "vendorIdentifiers" => [
+                        [
+                            "globalEntityId" => "YS_TR",
+                            "platformVendorId" => "ttc4",
+                        ],
+                    ],
+                    "requestConfiguration" => [
+                        "isAsyncModeCountBased" => true,
+                        "minimumUpdatesForAsync" => 1,
+                    ],
+                    "products" => [
+                        [
+                            "sku" => "45BTX6",
+                            "price" => 32,
+                        ],
+                        [
+                            "sku" => "2HWOP5",
+                            "price" => 16.2,
+                        ],
+                    ],
+                ],
+            ],
+            "query" => "mutation UpdateProducts(\$productsUpdate: ProductsUpdate!) {\n  productsUpdate(productsUpdate: \$productsUpdate) {\n    ... on ProductsUpdateAccepted {\n      bulkRequestId\n      __typename\n    }\n    ... on ProductsUpdateValidationErrors {\n      productsErrors {\n        vendorIdentifier {\n          platformVendorId\n          globalEntityId\n          __typename\n        }\n        sku\n        barcode\n        identifier\n        error\n        __typename\n      }\n      error {\n        key\n        variables\n        __typename\n      }\n      __typename\n    }\n    ... on ProductsUpdateAsyncAccepted {\n      result {\n        vendorIdentifier {\n          platformVendorId\n          globalEntityId\n          __typename\n        }\n        status\n        jobId\n        __typename\n      }\n      __typename\n    }\n    ... on ProductsUpdateAccepted {\n      bulkRequestId\n      __typename\n    }\n    __typename\n  }\n}",
+        ];
+
+        $response = Http::withHeaders([
+            'Authorization' => "Bearer $this->token",
+            'Content-Type' => 'application/json; charset=utf-8',
+            'Accept-Encoding' => 'gzip, deflate',
+            'Accept-Language' => 'tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7',
+            'Origin' => 'https://partner-app.yemeksepeti.com',
+            'Referer' => 'https://partner-app.yemeksepeti.com/',
+            'x-client-source' => 'one-web',
+        ])->withOptions(['verify' => false,
+            'allow_redirects' => true, // Yönlendirmeleri takip et
+            'decode_content' => true,  // gzip/deflate çözümlemesi
+            ])->post('https://catalog-vss-api-me.deliveryhero.io/graphql',$data);
+        if (!$response->ok()) {
+            Log::warning('Yemeksepeti fiyat güncellenemedi');
+            dd($response);
+        }
+    dd($response);
     }
 }

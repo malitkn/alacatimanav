@@ -71,7 +71,7 @@ class Update extends Component
     }
 
     public function update(\App\Yemeksepeti\Product $yemeksepeti) {
-        dd(session('access_token'));
+        dd($yemeksepeti->update());
 
     }
 }
