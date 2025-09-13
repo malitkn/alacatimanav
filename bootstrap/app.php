@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Middleware\SetSessionPreviousRoute;
+use \App\Http\Middleware\Api;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -13,8 +14,12 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->trustHosts(['http://localhost',]);
+		$middleware->validateCsrfTokens(except: [
+            '/api/orders' // <-- exclude this route
+        ]);
         $middleware->alias([
             'SetPreviousRoute' => SetSessionPreviousRoute::class,
+			'api' => Api::class
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

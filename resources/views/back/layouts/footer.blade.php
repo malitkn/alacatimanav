@@ -27,7 +27,15 @@
 <!-- Customscript js -->
 <script src="{{ asset('back/assets/js/script.js') }}"></script>
 @stack('js')
-
+<script>
+	let audio;
+	document.addEventListener('DOMContentLoaded', () => {
+  document.body.addEventListener('click', () => {
+    audio = new Audio("{{asset('/sounds/notification.mp3')}}");
+    audio.load(); // kullanıcı etkileşimi ile preload edilmiş olur
+  }, { once: true });
+});
+</script>
 <!-- Dark to light js -->
 <script>
     // On page load or when changing themes, best to add inline in `head` to avoid FOUC
@@ -38,6 +46,7 @@
         document.getElementById("light__to--dark")?.classList.remove("dark--version");
     }
 </script>
+
 
 </body>
 </html>

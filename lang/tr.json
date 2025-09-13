@@ -72,5 +72,6 @@
     "Record deleted successfully!": "Kayıt başarıyla silindi!",
     "The record could not be deleted.": "Kayıt silinemedi!",
     "Active": "Aktif",
-    "Passive": "Pasif"
+    "Passive": "Pasif",
+	"skippedProducts": "Bulunamayan ürünler [Midipos Kodları]"
 }

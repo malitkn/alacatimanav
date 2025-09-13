@@ -16,6 +16,7 @@
                     <ul class="offcanvas__sub_menu">
                         <li class="offcanvas__sub_menu_li"><a href="{{ route('products.update') }}" class="offcanvas__sub_menu_item">Fiyat Güncelle</a></li>
                         <li class="offcanvas__sub_menu_li"><a href="{{ route('products.settings') }}" class="offcanvas__sub_menu_item">Ayarlar</a></li>
+						  <li class="offcanvas__sub_menu_li"><a href="{{ route('products.update.status') }}" class="offcanvas__sub_menu_item">Ürün Aç / Kapat </a></li>
                     </ul>
                 </li>
 

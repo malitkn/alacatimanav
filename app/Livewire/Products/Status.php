@@ -8,32 +8,31 @@ use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
-class Update extends Component
+class Status extends Component
 {
-    #[Validate]
+	 #[Validate]
     public array $rows = [];
 	public array $oldRows = [];
-	public $withoutCommission;
-
-    protected function rules()
+	
+	 protected function rules()
     {
         return [
             'rows.*.midipos' => 'required|int|distinct',
-            'rows.*.newPrice' =>'required|numeric|regex:/^\d+(\.\d{1,2})?$/',
+            'rows.*.status' =>'required|boolean',
         ];
     }
-
-    protected function messages() {
+	
+	protected function messages() {
         return [
             'rows.*.midipos.required' => 'Midipos kodu zorunludur.',
-            'rows.*.newPrice.required' => 'Fiyat girilmedi.',
 			'rows.*.midipos.distinct' => 'Aynı midipos kodu tekrar girilemez',
+			'rows.*.status.required' => 'Ürün durum bilgisi zorunludur.',
         ];
     }
-
-    public function mount()
+	
+	public function mount()
     {
-        $this->addRow(4);
+        $this->addRow(2);
     }
 
     public function addRow($count = 1)
@@ -42,7 +41,7 @@ class Update extends Component
         $this->rows[] = [
             'midipos' => '',
             'productName' => '',
-            'newPrice' => '',
+			'status' => 0,
         ];
 		}
     }
@@ -76,23 +75,23 @@ class Update extends Component
         unset($this->rows[$index]);
         $this->rows = array_values($this->rows);
     }
-
+	
     public function render()
     {
-        return view('livewire.products.update');
+        return view('livewire.products.status')
+			->layout('livewire.layouts.page');
     }
 	
 	public function resetRows() {
 		$this->rows = [];
-		$this->addRow(4);
+		$this->addRow(2);
 	}
 
     public function update(\App\Yemeksepeti\Product $yemeksepeti, \App\Getir\Product $getir) {
 		$this->validate();
-		// dd($yemeksepeti->login());
-        $ys = $yemeksepeti->update($this->rows, $this->withoutCommission);
+        $ys = $yemeksepeti->setStatus($this->rows);
 		sleep(2);
-		$gtr = $getir->update($this->rows, $this->withoutCommission);
+		$gtr = $getir->setStatus($this->rows);
 	
 		 if($ys) {
 			 $statuses[] =  ['isSuccess' => true, 'message' => 'Yemeksepeti Başarıyla Güncellendi.'];
@@ -113,8 +112,11 @@ class Update extends Component
 				'data' => $gtr['data']
 			];
 		} 
+		
 		session()->now('statuses', $statuses);
 		$this->oldRows = $this->rows;
 		$this->resetRows();
+		
+		
     }
 }

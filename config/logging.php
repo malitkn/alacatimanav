@@ -64,7 +64,21 @@ return [
             'level' => env('LOG_LEVEL', 'debug'),
             'replace_placeholders' => true,
         ],
-
+		
+		'orders' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/orders.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+            'replace_placeholders' => true,
+        ],
+		
+		'products' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/products.log'),
+            'level' => env('LOG_LEVEL', 'debug'),
+            'replace_placeholders' => true,
+        ],
+		
         'daily' => [
             'driver' => 'daily',
             'path' => storage_path('logs/laravel.log'),

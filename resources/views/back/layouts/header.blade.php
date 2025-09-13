@@ -50,6 +50,7 @@
     </style>
 
     @stack('css')
+
 </head>
 
 <body>

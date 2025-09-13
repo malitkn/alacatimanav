@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\CommissionRate;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -16,20 +17,17 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        User::factory()->create([
+      
+		DB::table('users')->insert([
             'name' => 'M.Ali',
             'email' => 'bsn.muhammetali@gmail.com',
             'password' => Hash::make('12345'),
         ]);
+		
 
         $this->call([
             SettingSeeder::class,
             MediaSeeder::class,
-            BrokerSeeder::class,
-            PageCategorySeeder::class,
-            PageSeeder::class,
             CommissionRateSeeder::class,
         ]);
     }

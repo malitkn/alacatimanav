@@ -79,7 +79,9 @@
                     <li class="sidebar__dropdown--menu__items"><a class="sidebar__dropdown--menu__link"
                                                                   href="{{ route('products.update') }}">Fiyat Güncelle</a></li>
                     <li class="sidebar__dropdown--menu__items"><a class="sidebar__dropdown--menu__link"
-                                                                  href="{{ route('products.settings') }}">Sayfa oluştur</a></li>
+                                                                  href="{{ route('products.settings') }}">Komisyon Ayarları</a></li>
+					 <li class="sidebar__dropdown--menu__items"><a class="sidebar__dropdown--menu__link"
+                                                                  href="{{ route('products.update.status') }}">Ürün Aç / Kapat</a></li>
                 </ul>
             </li>
             <li class="sidebar__menu--items"><a class="sidebar__menu--link" href="./my-favorites.html">
