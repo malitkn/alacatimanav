@@ -13,7 +13,7 @@ use App\Traits\DecimalHelper;
 class Product
 {
 	use DecimalHelper;
-		
+
     private $username;
     private $password;
     private $firmId;
@@ -70,26 +70,26 @@ class Product
     public function update($rows, $withoutCommission = false)
     {
 		$products = collect();
-		
+
 		foreach ($rows as $row) {
 			$price = $row['newPrice'];
    			$relatedProducts = DB::table('products')->where('midipos', $row['midipos'])
 			 ->where('firm', $this->firmId)
 			 ->get()
-			 ->map(function ($product) use ($price) 
+			 ->map(function ($product) use ($price)
 				   {
    					 $product->price = $price;
   				 	 return $product;
 				});
 			if ($relatedProducts->isEmpty()) {
-				
+
    				 Log::channel('products')->warning('Yemeksepeti ürün bulunamadı. Midipos:' . $row['midipos']);
        			 continue;
 			}
     	 $products = $products->merge($relatedProducts);
 		}
 		$productItems = $products->map(function ($product) use ($withoutCommission) {
-		
+
     return [
         "sku" => trim($product->SKU), // SKU şeklinde olacak ufak harfte patlıyor
         "price" => $this->truncateDecimal(($product->price * ($withoutCommission ? 1.00 :  $this->commissionRate)) * ($product->factor)),
@@ -129,38 +129,38 @@ class Product
             ])->post('https://catalog-vss-api-me.deliveryhero.io/graphql',$data);
         if (!$response->ok()) {
 			$this->login();
-            Log::channel('products')->critical('Yemeksepeti fiyat güncellenemedi');			   
+            Log::channel('products')->critical('Yemeksepeti fiyat güncellenemedi');
         }
 	Log::channel('products')->info('Yemeksepeti Response =>', [
-		'status' => $response->status(), 
+		'status' => $response->status(),
 		'headers' => $response->headers(),
     	'body' => $response->body(),
-	]);	
+	]);
     return $response->ok();
     }
-	
+
 	public function setStatus($rows) {
 		$products = collect();
-		
+
 		foreach ($rows as $row) {
 			$status = $row['status'];
    			$relatedProducts = DB::table('products')->where('midipos', $row['midipos'])
 			 ->where('firm', $this->firmId)
 			 ->get()
-			 ->map(function ($product) use ($status) 
+			 ->map(function ($product) use ($status)
 				   {
    					 $product->active = $status ? true : false;
   				 	 return $product;
 				});
 			if ($relatedProducts->isEmpty()) {
-				
+
    				 Log::channel('products')->warning('Yemeksepeti ürün bulunamadı. Midipos:' . $row['midipos']);
        			 continue;
 			}
     	 $products = $products->merge($relatedProducts);
 		}
 		$productItems = $products->map(function ($product) {
-		
+
     return [
         "sku" => trim($product->SKU), // SKU şeklinde olacak ufak harfte patlıyor
         "active" => $product->active,
@@ -200,13 +200,13 @@ class Product
             ])->post('https://catalog-vss-api-me.deliveryhero.io/graphql',$data);
         if (!$response->ok()) {
 			$this->login();
-            Log::channel('products')->critical('Yemeksepeti ürün durumu güncellenemedi');			   
+            Log::channel('products')->critical('Yemeksepeti ürün durumu güncellenemedi');
         }
 	Log::channel('products')->info('Yemeksepeti Response =>', [
-		'status' => $response->status(), 
+		'status' => $response->status(),
 		'headers' => $response->headers(),
     	'body' => $response->body(),
-	]);	
+	]);
     return $response->ok();
 	}
 }

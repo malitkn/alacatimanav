@@ -46,7 +46,7 @@ class Update extends Component
         ];
 		}
     }
-	
+
 	public function loadOldRows()
 	{
 		$this->rows = $this->oldRows;
@@ -81,7 +81,7 @@ class Update extends Component
     {
         return view('livewire.products.update');
     }
-	
+
 	public function resetRows() {
 		$this->rows = [];
 		$this->addRow(4);
@@ -93,13 +93,13 @@ class Update extends Component
         $ys = $yemeksepeti->update($this->rows, $this->withoutCommission);
 		sleep(2);
 		$gtr = $getir->update($this->rows, $this->withoutCommission);
-	
+
 		 if($ys) {
 			 $statuses[] =  ['isSuccess' => true, 'message' => 'Yemeksepeti Başarıyla Güncellendi.'];
 		 } else {
 		 	$statuses[] =  ['isSuccess' => false, 'message' => "Yemeksepeti güncellenemedi."];
-		 } 
-		
+		 }
+
 		if($gtr["status"]) {
 			 $statuses[] =  [
 				 'isSuccess' => true,
@@ -108,11 +108,11 @@ class Update extends Component
 			 ];
 		 } else {
 			$statuses[] =  [
-				'isSuccess' => false, 
-				'message' => $gtr['message'], 
+				'isSuccess' => false,
+				'message' => $gtr['message'],
 				'data' => $gtr['data']
 			];
-		} 
+		}
 		session()->now('statuses', $statuses);
 		$this->oldRows = $this->rows;
 		$this->resetRows();
